@@ -5,4 +5,4 @@ but still
 always remind myself  
 I LOVE CODING!!!
 
-** First time push from netbeans soyabeans whatever beans
+** First time push from netbeans soybeans whatever beans
