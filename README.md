@@ -4,3 +4,5 @@ spending 4 hours++ code this GUI part, growing one white hair while coding this 
 but still  
 always remind myself  
 I LOVE CODING!!!
+
+** First time push from netbeans soyabeans whatever beans
