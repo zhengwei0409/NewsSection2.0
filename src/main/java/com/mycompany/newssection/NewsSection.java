@@ -78,12 +78,22 @@ public class NewsSection {
         JEditorPane title = new JEditorPane("text/html","<html>"+"<body style='font-family: tahoma, sans-serif; font-size: 30pt; margin: 10px;'>" + "<b>Top 5 News about Nature</b>" + "</body>" + "</html>");
         frame.add(title);
         
-        //Display the news in the frame
-        displayNews(newsList, frame);
+        // create a panel
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        
+        //Display the news in the panel
+        displayNews(newsList, mainPanel);
+        
+        //Add the button into the panel
+        addButton(mainPanel);
+        
+        //Add the panel to the frame
+        frame.add(mainPanel);
         
         // designing the frame
         frame.setTitle("NewsSection");
-        frame.setSize(760,700);
+        frame.setSize(710,650);
         frame.setLayout(new FlowLayout(FlowLayout.LEFT, 20,20));
         frame.getContentPane().setBackground(new Color(255,255,255));
         frame.setVisible(true);
@@ -128,7 +138,7 @@ public class NewsSection {
     }
     
     // define a displayNews method
-    public static void displayNews(ArrayList<ArrayList<String>> newsList, JFrame frame) {
+    public static void displayNews(ArrayList<ArrayList<String>> newsList, JPanel panel ) {
         // count the number of news
         int count = 1;
         
@@ -143,7 +153,7 @@ public class NewsSection {
             
             textArea.setEditable(false);
             count++;
-            frame.add(textArea);  
+            panel.add(textArea);  
             
             // add a hyperlinkListener so that the link can be click and direct to the url given
             textArea.addHyperlinkListener(new HyperlinkListener() {
@@ -160,6 +170,36 @@ public class NewsSection {
             }
             });
         }
+    }
+    
+    public static void addButton(JPanel panel) {
+        JButton nextButton = new JButton("Next");
+        
+        // Customize the button's appearance
+        nextButton.setFont(new Font("Tahoma", Font.BOLD, 15)); // Font
+        
+        // Create a filler component to push the button to the center
+        panel.add(Box.createHorizontalGlue());
+
+        // Set the alignment of the button to the center
+        nextButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        // Add an ActionListener to the button
+        nextButton.addActionListener(e -> {
+        // display the next section ( trivia )
+        testing();
+        
+        // Close the current frame
+        JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(panel);
+        currentFrame.dispose();
+        
+        });
+    
+        panel.add(nextButton);
+    }
+    
+    public static void testing() {
+        System.out.println("This button is being click!");
     }
 }
     
